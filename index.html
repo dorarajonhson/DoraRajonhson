@@ -14,7 +14,12 @@
       --line:#e6e6e8;
       --shadow:0 10px 25px rgba(0,0,0,0.06);
       --radius:16px;
+
+      /* Accent color (deep teal) */
+      --accent:#0f766e;
+      --accentHover:#0b5f59;
     }
+
     *{box-sizing:border-box}
     body{
       margin:0;
@@ -23,12 +28,17 @@
       color:var(--text);
       line-height:1.65;
     }
-    a{color:inherit}
+
+    a{color:var(--accent)}
+    a:hover{color:var(--accentHover)}
+
     .wrap{max-width:980px; margin:auto; padding:24px}
+
     .topbar{
       display:flex; gap:14px; align-items:center; justify-content:space-between;
       padding:10px 0;
     }
+
     .nav a{
       text-decoration:none;
       color:var(--muted);
@@ -36,6 +46,7 @@
       font-size:0.95em;
     }
     .nav a:hover{color:var(--text); text-decoration:underline}
+
     .hero{
       background:var(--card);
       border:1px solid var(--line);
@@ -44,8 +55,10 @@
       padding:38px;
       margin-top:10px;
     }
+
     h1{margin:0; font-size:2.25em; letter-spacing:-0.02em}
     .subtitle{margin:10px 0 18px; color:var(--muted); font-size:1.05em}
+
     .badges{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 0}
     .badge{
       border:1px solid var(--line);
@@ -55,7 +68,9 @@
       font-size:0.9em;
       color:var(--muted);
     }
+
     .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:18px}
+
     .btn{
       display:inline-block;
       text-decoration:none;
@@ -65,12 +80,19 @@
       background:#fff;
       font-weight:600;
       font-size:0.95em;
+      color:var(--text);
     }
+
     .btn.primary{
-      background:#1f2328;
+      background:var(--accent);
       color:#fff;
-      border-color:#1f2328;
+      border-color:var(--accent);
     }
+    .btn.primary:hover{
+      background:var(--accentHover);
+      border-color:var(--accentHover);
+    }
+
     .grid{
       display:grid;
       grid-template-columns: 1fr;
@@ -81,6 +103,7 @@
       .grid{grid-template-columns: 1fr 1fr;}
       .span-2{grid-column: 1 / -1;}
     }
+
     .card{
       background:var(--card);
       border:1px solid var(--line);
@@ -88,18 +111,23 @@
       box-shadow:var(--shadow);
       padding:28px;
     }
+
     h2{margin:0 0 10px; font-size:1.25em}
     ul{margin:10px 0 0; padding-left:18px}
     li{margin:6px 0}
+
     .muted{color:var(--muted)}
+    .splitline{border-top:1px solid var(--line); margin:16px 0}
+
     .footer{
       text-align:center;
       color:var(--muted);
       font-size:0.9em;
       padding:26px 0 10px;
     }
-    .smalllinks a{color:var(--muted); text-decoration:none}
-    .smalllinks a:hover{text-decoration:underline; color:var(--text)}
+
+    .smalllinks a{color:var(--accent); text-decoration:none}
+    .smalllinks a:hover{text-decoration:underline; color:var(--accentHover)}
   </style>
 </head>
 
@@ -109,7 +137,8 @@
       <div class="muted"><strong>Dora Rajonhson</strong> · PhD</div>
       <div class="nav">
         <a href="#services">Services</a>
-        <a href="#expertise">Expertise</a>
+        <a href="#credibility">Credibility</a>
+        <a href="#how">How I work</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
@@ -122,15 +151,18 @@
 
       <p>
         I am a PhD-trained interdisciplinary scientist working at the interface of tropical medicine,
-        medical entomology, bioinformatics, and microbiome ecology. I support academic institutions,
-        industry teams, and public health programs with study design, omics data analysis, reproducible
-        workflows, and scientific reporting.
+        medical entomology, bioinformatics, and microbiome ecology. I support research labs and public health
+        teams working in tropical medicine and vector-borne diseases, providing omics data analysis,
+        reproducible workflows, and publication-ready reporting.
+      </p>
+
+      <p class="muted" style="margin-top:-6px">
+        Who I help: academic labs · research institutes · public health programs · biotech & aquaculture teams
       </p>
 
       <div class="cta">
         <a class="btn primary" href="mailto:dorarajonhson@gmail.com">Email me</a>
-        <!-- Optional: once you upload your CV PDF, rename it and uncomment the button below -->
-        <!-- <a class="btn" href="Dora_Rajonhson_CV.pdf" target="_blank">Download CV</a> -->
+        <a class="btn" href="Dora_Rajonhson_CV.pdf" target="_blank" rel="noopener">Download CV</a>
       </div>
 
       <div class="badges">
@@ -155,7 +187,7 @@
         </ul>
       </div>
 
-      <div class="card" id="expertise">
+      <div class="card">
         <h2>Selected Expertise Areas</h2>
         <ul>
           <li>Vector-borne disease research</li>
@@ -163,68 +195,80 @@
           <li>Environmental microbiome monitoring</li>
         </ul>
 
-        <p class="muted" style="margin-top:14px">
-          Typical outputs: analysis plans, reproducible scripts, figures for publication,
+        <div class="splitline"></div>
+
+        <p class="muted" style="margin:0">
+          Typical outputs: analysis plan + timeline, reproducible scripts, publication-ready figures,
           and clear interpretation aligned with your study questions.
         </p>
       </div>
 
-      <div class="card span-2">
-        <h2>Credibility (quick view)</h2>
-        
-          <p class="muted" style="margin:0 0 10px">
-    Affiliations & training
-  </p>
-  <ul>
-    <li>
-      <strong>BIOTEC / NSTDA (Thailand)</strong> — Postdoctoral Fellow
-      (<a href="https://www.biotec.or.th/en/" target="_blank" rel="noopener">BIOTEC</a> /
-       <a href="https://www.nstda.or.th/en/" target="_blank" rel="noopener">NSTDA</a>)
-    </li>
-    <li>
-      <strong>Mahidol University</strong> — PhD, Tropical Medicine
-      (<a href="https://mahidol.ac.th/" target="_blank" rel="noopener">Mahidol</a>)
-    </li>
-  </ul>
+      <div class="card span-2" id="credibility">
+        <h2>Credibility</h2>
 
-  <p class="muted" style="margin:16px 0 10px">
-    Fellowships & awards
-  </p>
-  <ul>
-    <li><strong>PMUC–Industrial Postdoctoral Fellowship</strong> (Thailand)</li>
-    <li><strong>BIOTEC–UNESCO–TWAS Postdoctoral Fellowship</strong></li>
-    <li><strong>OWSD–UNESCO PhD Fellowship</strong></li>
-  </ul>
+        <p class="muted" style="margin:0 0 10px">Affiliations & training</p>
+        <ul>
+          <li>
+            <strong>BIOTEC / NSTDA (Thailand)</strong> — Postdoctoral Fellow
+            (<a href="https://www.biotec.or.th/en/" target="_blank" rel="noopener">BIOTEC</a> /
+             <a href="https://www.nstda.or.th/en/" target="_blank" rel="noopener">NSTDA</a>)
+          </li>
+          <li>
+            <strong>Mahidol University</strong> — PhD, Tropical Medicine
+            (<a href="https://mahidol.ac.th/" target="_blank" rel="noopener">Mahidol</a>)
+          </li>
+        </ul>
 
-  <p class="muted" style="margin:16px 0 10px">
-    Selected publications
-  </p>
-  <ul>
-    <li>
-      Rajonhson DM et al. (2024) <em>Microbiology Spectrum</em>.
-      <a href="https://doi.org/10.1128/spectrum.00965-24" target="_blank" rel="noopener">DOI</a>
-    </li>
-    <li>
-      Rajonhson DM et al. (2022) <em>Insects</em>.
-      <a href="https://doi.org/10.3390/insects13121155" target="_blank" rel="noopener">DOI</a>
-    </li>
-    <li>
-      Rajonhson DM et al. (2017) <em>Journal of Medical Entomology</em>.
-      <a href="https://doi.org/10.1093/jme/tjw200" target="_blank" rel="noopener">DOI</a>
-    </li>
-  </ul>
+        <p class="muted" style="margin:16px 0 10px">Fellowships & awards</p>
+        <ul>
+          <li><strong>PMUC–Industrial Postdoctoral Fellowship</strong> (Thailand)</li>
+          <li><strong>BIOTEC–UNESCO–TWAS Postdoctoral Fellowship</strong></li>
+          <li><strong>OWSD–UNESCO PhD Fellowship</strong></li>
+        </ul>
 
-  <p class="muted" style="margin:16px 0 0">
-    ORCID: <a href="https://orcid.org/0000-0003-3247-4510" target="_blank" rel="noopener">0000-0003-3247-4510</a>
-  </p>
+        <p class="muted" style="margin:16px 0 10px">Selected publications</p>
+        <ul>
+          <li>
+            Rajonhson DM et al. (2024) <em>Microbiology Spectrum</em>.
+            <a href="https://doi.org/10.1128/spectrum.00965-24" target="_blank" rel="noopener">DOI</a>
+          </li>
+          <li>
+            Rajonhson DM et al. (2022) <em>Insects</em>.
+            <a href="https://doi.org/10.3390/insects13121155" target="_blank" rel="noopener">DOI</a>
+          </li>
+          <li>
+            Rajonhson DM et al. (2017) <em>Journal of Medical Entomology</em>.
+            <a href="https://doi.org/10.1093/jme/tjw200" target="_blank" rel="noopener">DOI</a>
+          </li>
+        </ul>
+
+        <p class="muted" style="margin:16px 0 0">
+          ORCID: <a href="https://orcid.org/0000-0003-3247-4510" target="_blank" rel="noopener">0000-0003-3247-4510</a>
+        </p>
+      </div>
+
+      <div class="card span-2" id="how">
+        <h2>How I work</h2>
+        <ol style="margin:10px 0 0; padding-left:18px">
+          <li><strong>Clarify goals.</strong> A short call/email to define your question, data, and timeline.</li>
+          <li><strong>Plan + execute.</strong> I propose a clear analysis plan, then deliver reproducible results.</li>
+          <li><strong>Interpret + handover.</strong> You receive figures, summaries, and code for full transparency.</li>
+        </ol>
+
+        <p class="muted" style="margin:14px 0 0">
+          Available for short projects (1–2 weeks) or longer collaborations.
+        </p>
       </div>
 
       <div class="card span-2" id="contact">
         <h2>Contact</h2>
         <p>Email: <a href="mailto:dorarajonhson@gmail.com">dorarajonhson@gmail.com</a></p>
         <p class="smalllinks">
-          ORCID: <a href="https://orcid.org/0000-0003-3247-4510" target="_blank">0000-0003-3247-4510</a>
-          · GitHub: <a href="https://github.com/dorarajonhson" target="_blank">github.com/dorarajonhson</a>
+          ORCID: <a href="https://orcid.org/0000-0003-3247-4510" target="_blank" rel="noopener">0000-0003-3247-4510</a>
+          · GitHub: <a href="https://github.com/dorarajonhson" target="_blank" rel="noopener">github.com/dorarajonhson</a>
+        </p>
+        <p class="muted" style="margin:10px 0 0">
+          Tip: include a brief description of your project + data type (16S, RNA-seq, multi-omics) and your deadline.
         </p>
       </div>
     </div>
@@ -233,4 +277,5 @@
   </div>
 </body>
 </html>
+
 
