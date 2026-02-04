@@ -1,47 +1,193 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dora Rajonhson – Scientific Consultant</title>
+
+  <style>
+    :root{
+      --bg:#f6f6f7;
+      --card:#ffffff;
+      --text:#1f2328;
+      --muted:#5a5f66;
+      --line:#e6e6e8;
+      --shadow:0 10px 25px rgba(0,0,0,0.06);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.65;
+    }
+    a{color:inherit}
+    .wrap{max-width:980px; margin:auto; padding:24px}
+    .topbar{
+      display:flex; gap:14px; align-items:center; justify-content:space-between;
+      padding:10px 0;
+    }
+    .nav a{
+      text-decoration:none;
+      color:var(--muted);
+      margin-left:14px;
+      font-size:0.95em;
+    }
+    .nav a:hover{color:var(--text); text-decoration:underline}
+    .hero{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:38px;
+      margin-top:10px;
+    }
+    h1{margin:0; font-size:2.25em; letter-spacing:-0.02em}
+    .subtitle{margin:10px 0 18px; color:var(--muted); font-size:1.05em}
+    .badges{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 0}
+    .badge{
+      border:1px solid var(--line);
+      background:#fafafa;
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:0.9em;
+      color:var(--muted);
+    }
+    .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:18px}
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      padding:11px 14px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:600;
+      font-size:0.95em;
+    }
+    .btn.primary{
+      background:#1f2328;
+      color:#fff;
+      border-color:#1f2328;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:18px;
+      margin-top:18px;
+    }
+    @media (min-width: 860px){
+      .grid{grid-template-columns: 1fr 1fr;}
+      .span-2{grid-column: 1 / -1;}
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:28px;
+    }
+    h2{margin:0 0 10px; font-size:1.25em}
+    ul{margin:10px 0 0; padding-left:18px}
+    li{margin:6px 0}
+    .muted{color:var(--muted)}
+    .footer{
+      text-align:center;
+      color:var(--muted);
+      font-size:0.9em;
+      padding:26px 0 10px;
+    }
+    .smalllinks a{color:var(--muted); text-decoration:none}
+    .smalllinks a:hover{text-decoration:underline; color:var(--text)}
+  </style>
 </head>
 
-<body style="font-family: Arial, sans-serif; max-width: 900px; margin: auto; padding: 50px; line-height: 1.6;">
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="muted"><strong>Dora Rajonhson</strong> · PhD</div>
+      <div class="nav">
+        <a href="#services">Services</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
 
-  <h1>Dora Rajonhson, PhD</h1>
-  <h3>Scientific Consultant in Bioinformatics, Microbiome Ecology & Multi-Omics</h3>
+    <div class="hero">
+      <h1>Dora Rajonhson, PhD</h1>
+      <div class="subtitle">
+        Scientific Consultant in Tropical Medicine, Medical Entomology & Multi-Omics
+      </div>
 
-  <p>
-    I am a PhD-trained interdisciplinary scientist working at the interface of tropical medicine, medical entomology, bioinformatics, and microbiome ecology.
-    I support academic institutions, industry teams, public health programs, and research-driven organizations with study design, omics data analysis, reproducible workflows, 
-    and scientific reporting.
-  </p>
+      <p>
+        I am a PhD-trained interdisciplinary scientist working at the interface of tropical medicine,
+        medical entomology, bioinformatics, and microbiome ecology. I support academic institutions,
+        industry teams, and public health programs with study design, omics data analysis, reproducible
+        workflows, and scientific reporting.
+      </p>
 
-  <h2>Consulting Services</h2>
-  <ul>
-    <li>Microbiome analysis (16S rRNA, diversity metrics, longitudinal ecology)</li>
-    <li>Medical entomology research support (vector biology, microbiomes, molecular markers)</li>
-    <li>RNA-seq and transcriptomics workflows (DESeq2, annotation, functional interpretation)</li>
-    <li>Multi-omics integration (host–microbiome–environment frameworks)</li>
-    <li>Data visualization for publications and reports</li>
-    <li>Scientific writing support (manuscripts, grant proposals, reviewer responses)</li>
-  </ul>
+      <div class="cta">
+        <a class="btn primary" href="mailto:dorarajonhson@gmail.com">Email me</a>
+        <!-- Optional: once you upload your CV PDF, rename it and uncomment the button below -->
+        <!-- <a class="btn" href="Dora_Rajonhson_CV.pdf" target="_blank">Download CV</a> -->
+      </div>
 
-  <h2>Selected Expertise Areas</h2>
-  <ul>
-    <li>Vector-borne disease research</li>
-    <li>Aquaculture health and environmental stress biology</li>
-    <li>Environmental microbiome monitoring</li>
-  </ul>
+      <div class="badges">
+        <div class="badge">Tropical medicine</div>
+        <div class="badge">Medical entomology</div>
+        <div class="badge">Microbiome ecology</div>
+        <div class="badge">RNA-seq / transcriptomics</div>
+        <div class="badge">Reproducible workflows</div>
+      </div>
+    </div>
 
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:dorarajonhson@gmail.com">dorarajonhson@gmail.com</a></p>
-  <p>ORCID: <a href="https://orcid.org/0000-0003-3247-4510" target="_blank">0000-0003-3247-4510</a></p>
+    <div class="grid">
+      <div class="card" id="services">
+        <h2>Consulting Services</h2>
+        <ul>
+          <li>Medical entomology research support (vector biology, microbiomes, molecular markers)</li>
+          <li>Microbiome analysis (16S rRNA, diversity metrics, longitudinal ecology)</li>
+          <li>RNA-seq and transcriptomics workflows (DESeq2, annotation, functional interpretation)</li>
+          <li>Multi-omics integration (host–microbiome–environment frameworks)</li>
+          <li>Data visualization for publications and reports</li>
+          <li>Scientific writing support (manuscripts, grant proposals, reviewer responses)</li>
+        </ul>
+      </div>
 
-  <p style="margin-top:40px; font-size: 0.9em; color: grey;">
-    © Dora Rajonhson
-  </p>
+      <div class="card" id="expertise">
+        <h2>Selected Expertise Areas</h2>
+        <ul>
+          <li>Vector-borne disease research</li>
+          <li>Aquaculture health and environmental stress biology</li>
+          <li>Environmental microbiome monitoring</li>
+        </ul>
 
+        <p class="muted" style="margin-top:14px">
+          Typical outputs: analysis plans, reproducible scripts, figures for publication,
+          and clear interpretation aligned with your study questions.
+        </p>
+      </div>
+
+      <div class="card span-2">
+        <h2>Credibility (quick view)</h2>
+        <p class="muted" style="margin:0">
+          If you want, we can add a small section here for: affiliations (e.g., BIOTEC, Mahidol, Institut Pasteur),
+          selected publications, and conference talks—this increases trust a lot.
+        </p>
+      </div>
+
+      <div class="card span-2" id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:dorarajonhson@gmail.com">dorarajonhson@gmail.com</a></p>
+        <p class="smalllinks">
+          ORCID: <a href="https://orcid.org/0000-0003-3247-4510" target="_blank">0000-0003-3247-4510</a>
+          · GitHub: <a href="https://github.com/dorarajonhson" target="_blank">github.com/dorarajonhson</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">© Dora Rajonhson</div>
+  </div>
 </body>
 </html>
-
-
