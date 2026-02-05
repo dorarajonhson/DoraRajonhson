@@ -1,307 +1,301 @@
-<!doctype html> # Declares this as an HTML5 document (helps the browser interpret the page correctly)
-<html lang="en"> # Starts the HTML document; lang="en" tells browsers/screen readers the language is English
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dora Rajonhson – Scientific Consultant</title>
 
-<head> # Start of the HEAD section (not visible on the page). Contains metadata, title, and CSS.
-  <meta charset="utf-8" /> # Sets character encoding to UTF-8 (supports accents/special characters)
-  <meta name="viewport" content="width=device-width, initial-scale=1" /> # Makes the page responsive on phones (width matches device screen)
-  <title>Dora Rajonhson – Scientific Consultant</title> # The text shown in the browser tab/title bar
+  <style>
+    :root{
+      --bg:#f6f6f7;
+      --card:#ffffff;
+      --text:#1f2328;
+      --muted:#5a5f66;
+      --line:#e6e6e8;
+      --shadow:0 10px 25px rgba(0,0,0,0.06);
+      --radius:16px;
 
-  <style> # Starts the CSS styles inside the HTML file (no external CSS file needed)
-    :root{ # Defines global CSS variables you can reuse anywhere (good for theme/colors)
-      --bg:#f6f6f7; # Background color of the whole page
-      --card:#ffffff; # Background color used for the “card” boxes
-      --text:#1f2328; # Main text color
-      --muted:#5a5f66; # Secondary/muted text color
-      --line:#e6e6e8; # Light gray line/border color
-      --shadow:0 10px 25px rgba(0,0,0,0.06); # Shadow style used on cards for depth
-      --radius:16px; # Default rounded corners value for cards
-
-      /* Accent color (deep teal) */ # Comment for humans; does nothing to the browser
-      --accent:#0f766e; # Main accent color (links + primary button)
-      --accentHover:#0b5f59; # Accent color when hovering links/buttons
+      /* Accent color (deep teal) */
+      --accent:#0f766e;
+      --accentHover:#0b5f59;
     }
 
-    *{box-sizing:border-box} # Makes padding/border included in element width/height calculations (easier layout)
-    body{ # Styles applied to the whole visible page body
-      margin:0; # Removes default browser margin around the page
-      font-family: Arial, sans-serif; # Sets the font for the entire site
-      background:var(--bg); # Uses the variable --bg as the background color
-      color:var(--text); # Uses the variable --text as the main font color
-      line-height:1.65; # Controls line spacing for better readability
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.65;
     }
 
-    a{color:var(--accent)} # Default link color uses your accent
-    a:hover{color:var(--accentHover)} # On hover, link color changes to darker accent
+    a{color:var(--accent)}
+    a:hover{color:var(--accentHover)}
 
-    .wrap{max-width:980px; margin:auto; padding:24px} # Centers content and limits width; adds padding around everything
+    .wrap{max-width:980px; margin:auto; padding:24px}
 
-    .topbar{ # Styles the top row (name on left, navigation on right)
-      display:flex; gap:14px; align-items:center; justify-content:space-between; # Flex layout with spacing and alignment
-      padding:10px 0; # Vertical spacing above and below the top bar
+    .topbar{
+      display:flex; gap:14px; align-items:center; justify-content:space-between;
+      padding:10px 0;
     }
 
-    .nav a{ # Styles links inside the nav area only
-      text-decoration:none; # Removes underline from nav links by default
-      color:var(--muted); # Uses muted color to make nav subtle
-      margin-left:14px; # Spacing between nav links
-      font-size:0.95em; # Slightly smaller than normal text
+    .nav a{
+      text-decoration:none;
+      color:var(--muted);
+      margin-left:14px;
+      font-size:0.95em;
     }
-    .nav a:hover{color:var(--text); text-decoration:underline} # On hover: darker and underlined (more obvious)
+    .nav a:hover{color:var(--text); text-decoration:underline}
 
-    .hero{ # Styles the main intro “hero” box
-      background:var(--card); # White card background
-      border:1px solid var(--line); # Light border around the hero
-      border-radius:var(--radius); # Rounded corners using the variable
-      box-shadow:var(--shadow); # Adds depth shadow
-      padding:38px; # Internal spacing
-      margin-top:10px; # Space above the hero
-    }
-
-    h1{margin:0; font-size:2.25em; letter-spacing:-0.02em} # Main title size and spacing
-    .subtitle{margin:10px 0 18px; color:var(--muted); font-size:1.05em} # Subtitle styling under the name
-
-    .badges{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 0} # Badge container: flex row that wraps on small screens
-    .badge{ # Each badge “pill”
-      border:1px solid var(--line); # Light border
-      background:#fafafa; # Slightly gray background
-      border-radius:999px; # Very round corners so it becomes a pill shape
-      padding:6px 10px; # Internal spacing
-      font-size:0.9em; # Slightly smaller text
-      color:var(--muted); # Muted text color
+    .hero{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:38px;
+      margin-top:10px;
     }
 
-    .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:18px} # CTA buttons container: wraps on small screens
+    h1{margin:0; font-size:2.25em; letter-spacing:-0.02em}
+    .subtitle{margin:10px 0 18px; color:var(--muted); font-size:1.05em}
 
-    .btn{ # Base style for any button-like link
-      display:inline-block; # Allows padding and block-like behavior while staying inline
-      text-decoration:none; # Removes underline
-      padding:11px 14px; # Button size
-      border-radius:12px; # Rounded corners
-      border:1px solid var(--line); # Light border
-      background:#fff; # White background
-      font-weight:600; # Semi-bold text
-      font-size:0.95em; # Slightly smaller text
-      color:var(--text); # Dark text color
+    .badges{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 0}
+    .badge{
+      border:1px solid var(--line);
+      background:#fafafa;
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:0.9em;
+      color:var(--muted);
     }
 
-    .btn.primary{ # Special style for the “primary” button (Email me)
-      background:var(--accent); # Teal background
-      color:#fff; # White text
-      border-color:var(--accent); # Border matches teal background
-    }
-    .btn.primary:hover{ # Hover effect for primary button
-      background:var(--accentHover); # Darker teal background
-      border-color:var(--accentHover); # Border matches hover color
-    }
+    .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:18px}
 
-    .grid{ # Layout container for the lower section cards
-      display:grid; # Uses CSS grid system
-      grid-template-columns: 1fr; # Default: one column (good on mobile)
-      gap:18px; # Space between cards
-      margin-top:18px; # Space above the grid
-    }
-    @media (min-width: 860px){ # When the screen is wider than 860px
-      .grid{grid-template-columns: 1fr 1fr;} # Switch to 2 columns (desktop layout)
-      .span-2{grid-column: 1 / -1;} # Any element with class span-2 spans both columns
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      padding:11px 14px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:600;
+      font-size:0.95em;
+      color:var(--text);
     }
 
-    .card{ # Common card style used across the page
-      background:var(--card); # White background
-      border:1px solid var(--line); # Light border
-      border-radius:var(--radius); # Rounded corners
-      box-shadow:var(--shadow); # Shadow depth
-      padding:28px; # Inner spacing
+    .btn.primary{
+      background:var(--accent);
+      color:#fff;
+      border-color:var(--accent);
+    }
+    .btn.primary:hover{
+      background:var(--accentHover);
+      border-color:var(--accentHover);
     }
 
-    h2{margin:0 0 10px; font-size:1.25em} # Section headings style
-    ul{margin:10px 0 0; padding-left:18px} # List spacing and indentation
-    li{margin:6px 0} # Adds spacing between bullet points
-
-    .muted{color:var(--muted)} # Utility class: makes any text muted gray
-    .splitline{border-top:1px solid var(--line); margin:16px 0} # Horizontal divider line
-
-    .footer{ # Footer styling at bottom
-      text-align:center; # Centers footer text
-      color:var(--muted); # Muted color
-      font-size:0.9em; # Smaller font
-      padding:26px 0 10px; # Space around the footer
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:18px;
+      margin-top:18px;
+    }
+    @media (min-width: 860px){
+      .grid{grid-template-columns: 1fr 1fr;}
+      .span-2{grid-column: 1 / -1;}
     }
 
-    .smalllinks a{color:var(--accent); text-decoration:none} # Small link row style (no underline by default)
-    .smalllinks a:hover{text-decoration:underline; color:var(--accentHover)} # Hover: underline + darker accent
-  </style> # End of CSS
-</head> # End of HEAD section
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:28px;
+    }
 
-<body> # Start of the visible content
-  <div class="wrap"> # Main centered container for all content
-    <div class="topbar"> # Top bar row
-      <div class="muted"><strong>Dora Rajonhson</strong> · PhD</div> # Left side: name bold + “PhD” in muted color
-      <div class="nav"> # Right side: navigation links
+    h2{margin:0 0 10px; font-size:1.25em}
+    ul{margin:10px 0 0; padding-left:18px}
+    li{margin:6px 0}
+
+    .muted{color:var(--muted)}
+    .splitline{border-top:1px solid var(--line); margin:16px 0}
+
+    .footer{
+      text-align:center;
+      color:var(--muted);
+      font-size:0.9em;
+      padding:26px 0 10px;
+    }
+
+    .smalllinks a{color:var(--accent); text-decoration:none}
+    .smalllinks a:hover{text-decoration:underline; color:var(--accentHover)}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="muted"><strong>Dora Rajonhson</strong> · PhD</div>
+      <div class="nav">
         <a href="#timeline">Timeline</a>
-        <a href="#credibility">Credibility</a> # Scrolls to id="credibility"
-        <a href="#services">Services</a> # Clicking scrolls to the element with id="services"
-        <a href="#how">How I work</a> # Scrolls to id="how"
+        <a href="#credibility">Credibility</a>
+        <a href="#services">Services</a>
+        <a href="#how">How I work</a>
         <a href="#hire">Hire me</a>
-        <a href="#contact">Contact</a> # Scrolls to id="contact"
+        <a href="#contact">Contact</a>
       </div>
     </div>
 
-    <div class="hero"> # Main introduction card section
-      <img src="profile.jpg" alt="Dora Rajonhson" style="width:120px;height:120px;border-radius:999px;object-fit:cover;border:1px solid #e6e6e8;margin:10px 0 6px;">
-      <h1>Dora Rajonhson, PhD</h1> # Big headline name
-      <div class="subtitle">
-        Scientific Consultant in Tropical Medicine, Medical Entomology & Multi-Omics
-      </div> # Subtitle text under the name
+    <div class="hero">
+      <img src="profile.jpg" alt="Dora Rajonhson"
+           style="width:120px;height:120px;border-radius:999px;object-fit:cover;border:1px solid #e6e6e8;margin:10px 0 6px;">
 
-      <p> # Starts a paragraph block
+      <h1>Dora Rajonhson, PhD</h1>
+      <div class="subtitle">Scientific Consultant in Tropical Medicine, Medical Entomology & Multi-Omics</div>
+
+      <p>
         I am a PhD-trained interdisciplinary scientist working at the interface of tropical medicine,
         medical entomology, bioinformatics, and microbiome ecology. I support research labs and public health
         teams working in tropical medicine and vector-borne diseases, providing omics data analysis,
         reproducible workflows, and publication-ready reporting.
-      </p> # Ends the paragraph block
+      </p>
 
-      <p class="muted" style="margin-top:-6px"> # Muted paragraph + inline style pulls it slightly upwards
+      <p class="muted" style="margin-top:-6px">
         Who I help: academic labs · research institutes · public health programs · biotech & aquaculture teams
-      </p> # End of that paragraph
+      </p>
 
-      <div class="cta"> # Container holding call-to-action buttons
-        <a class="btn primary" href="mailto:dorarajonhson@gmail.com">Email me</a> # Opens email app to send you an email
-        <a class="btn" href="Rajonhson_CV.pdf" target="_blank" rel="noopener">Download CV</a> # Opens CV PDF in new tab (noopener is safer)
+      <div class="cta">
+        <a class="btn primary" href="mailto:dorarajonhson@gmail.com">Email me</a>
+        <a class="btn" href="Rajonhson_CV.pdf" target="_blank" rel="noopener">Download CV</a>
       </div>
 
-      <div class="badges"> # Container for your skill/topic badges
-        <div class="badge">Tropical medicine</div> # One badge label
-        <div class="badge">Medical entomology</div> # One badge label
-        <div class="badge">Microbiome ecology</div> # One badge label
-        <div class="badge">RNA-seq / transcriptomics</div> # One badge label
-        <div class="badge">Reproducible workflows</div> # One badge label
+      <div class="badges">
+        <div class="badge">Tropical medicine</div>
+        <div class="badge">Medical entomology</div>
+        <div class="badge">Microbiome ecology</div>
+        <div class="badge">RNA-seq / transcriptomics</div>
+        <div class="badge">Reproducible workflows</div>
       </div>
     </div>
 
-    <div class="grid"> # Grid container holding multiple content cards below hero
-      <div class="card" id="services"> # Services card; id lets the nav jump here
-        <h2>Consulting Services</h2> # Title of the services section
-        <ul> # Starts a bullet list
-          <li>Medical entomology research support (vector biology, microbiomes, molecular markers)</li> # Bullet point
-          <li>Microbiome analysis (16S rRNA, diversity metrics, longitudinal ecology)</li> # Bullet point
-          <li>RNA-seq and transcriptomics workflows (DESeq2, annotation, functional interpretation)</li> # Bullet point
-          <li>Multi-omics integration (host–microbiome–environment frameworks)</li> # Bullet point
-          <li>Data visualization for publications and reports</li> # Bullet point
-          <li>Scientific writing support (manuscripts, grant proposals, reviewer responses)</li> # Bullet point
-        </ul> # Ends the bullet list
-      </div> # Ends services card
+    <div class="grid">
+      <div class="card" id="services">
+        <h2>Consulting Services</h2>
+        <ul>
+          <li>Medical entomology research support (vector biology, microbiomes, molecular markers)</li>
+          <li>Microbiome analysis (16S rRNA, diversity metrics, longitudinal ecology)</li>
+          <li>RNA-seq and transcriptomics workflows (DESeq2, annotation, functional interpretation)</li>
+          <li>Multi-omics integration (host–microbiome–environment frameworks)</li>
+          <li>Data visualization for publications and reports</li>
+          <li>Scientific writing support (manuscripts, grant proposals, reviewer responses)</li>
+        </ul>
+      </div>
 
-      <div class="card"> # Expertise card (no id; not directly jump-linked)
-        <h2>Selected Expertise Areas</h2> # Title
-        <ul> # Bullet list of expertise
-          <li>Vector-borne disease research</li> # Item
-          <li>Aquaculture health and environmental stress biology</li> # Item
-          <li>Environmental microbiome monitoring</li> # Item
+      <div class="card">
+        <h2>Selected Expertise Areas</h2>
+        <ul>
+          <li>Vector-borne disease research</li>
+          <li>Aquaculture health and environmental stress biology</li>
+          <li>Environmental microbiome monitoring</li>
         </ul>
 
-        <div class="splitline"></div> # Visual divider line
+        <div class="splitline"></div>
 
-        <p class="muted" style="margin:0"> # Muted paragraph; margin:0 removes extra spacing
+        <p class="muted" style="margin:0">
           Typical outputs: analysis plan + timeline, reproducible scripts, publication-ready figures,
           and clear interpretation aligned with your study questions.
         </p>
       </div>
 
-      <div class="card span-2" id="credibility"> # Full-width card on desktop; id used by nav
-        <h2>Credibility</h2> # Title
+      <div class="card span-2" id="credibility">
+        <h2>Credibility</h2>
 
-        <p class="muted" style="margin:0 0 10px">Affiliations & training</p> # Subheading label
-        <ul> # Starts list
-          <li> # First affiliation item starts
+        <p class="muted" style="margin:0 0 10px">Affiliations & training</p>
+        <ul>
+          <li>
             <strong>BIOTEC / NSTDA (Thailand)</strong> — Postdoctoral Fellow
             (<a href="https://www.biotec.or.th/en/" target="_blank" rel="noopener">BIOTEC</a> /
              <a href="https://www.nstda.or.th/en/" target="_blank" rel="noopener">NSTDA</a>)
-          </li> # Ends the first affiliation item
-          <li> # Second affiliation item
+          </li>
+          <li>
             <strong>Mahidol University</strong> — PhD, Tropical Medicine
             (<a href="https://mahidol.ac.th/" target="_blank" rel="noopener">Mahidol</a>)
-          </li> # Ends the second affiliation item
-        </ul> # Ends affiliations list
-
-        <p class="muted" style="margin:16px 0 10px">Fellowships & awards</p> # Subheading label
-        <ul> # List of fellowships
-          <li><strong>PMUC–Industrial Postdoctoral Fellowship</strong> (Thailand)</li> # Fellowship item
-          <li><strong>BIOTEC–UNESCO–TWAS Postdoctoral Fellowship</strong></li> # Fellowship item
-          <li><strong>OWSD–UNESCO PhD Fellowship</strong></li> # Fellowship item
+          </li>
         </ul>
 
-        <p class="muted" style="margin:16px 0 10px">Selected publications</p> # Subheading label
-        <ul> # List of publications with DOI links
-          <li>
-            Rajonhson DM et al. (2024) <em>Microbiology Spectrum</em>.
+        <p class="muted" style="margin:16px 0 10px">Fellowships & awards</p>
+        <ul>
+          <li><strong>PMUC–Industrial Postdoctoral Fellowship</strong> (Thailand)</li>
+          <li><strong>BIOTEC–UNESCO–TWAS Postdoctoral Fellowship</strong></li>
+          <li><strong>OWSD–UNESCO PhD Fellowship</strong></li>
+        </ul>
+
+        <p class="muted" style="margin:16px 0 10px">Selected publications</p>
+        <ul>
+          <li>Rajonhson DM et al. (2024) <em>Microbiology Spectrum</em>.
             <a href="https://doi.org/10.1128/spectrum.00965-24" target="_blank" rel="noopener">DOI</a>
           </li>
-          <li>
-            Rajonhson DM et al. (2022) <em>Insects</em>.
+          <li>Rajonhson DM et al. (2022) <em>Insects</em>.
             <a href="https://doi.org/10.3390/insects13121155" target="_blank" rel="noopener">DOI</a>
           </li>
-          <li>
-            Rajonhson DM et al. (2017) <em>Journal of Medical Entomology</em>.
+          <li>Rajonhson DM et al. (2017) <em>Journal of Medical Entomology</em>.
             <a href="https://doi.org/10.1093/jme/tjw200" target="_blank" rel="noopener">DOI</a>
           </li>
         </ul>
 
-        <p class="muted" style="margin:16px 0 0"> # ORCID line with top margin and no bottom margin
+        <p class="muted" style="margin:16px 0 0">
           ORCID: <a href="https://orcid.org/0000-0003-3247-4510" target="_blank" rel="noopener">0000-0003-3247-4510</a>
         </p>
       </div>
 
-      <div class="card span-2" id="how"> # Full width card on desktop; used by nav
-        <h2>How I work</h2> # Title
-        <ol style="margin:10px 0 0; padding-left:18px"> # Ordered list; inline styles for spacing and indentation
-          <li><strong>Clarify goals.</strong> A short call/email to define your question, data, and timeline.</li> # Step 1
-          <li><strong>Plan + execute.</strong> I propose a clear analysis plan, then deliver reproducible results.</li> # Step 2
-          <li><strong>Interpret + handover.</strong> You receive figures, summaries, and code for full transparency.</li> # Step 3
+      <div class="card span-2" id="how">
+        <h2>How I work</h2>
+        <ol style="margin:10px 0 0; padding-left:18px">
+          <li><strong>Clarify goals.</strong> A short call/email to define your question, data, and timeline.</li>
+          <li><strong>Plan + execute.</strong> I propose a clear analysis plan, then deliver reproducible results.</li>
+          <li><strong>Interpret + handover.</strong> You receive figures, summaries, and code for full transparency.</li>
         </ol>
-
-        <p class="muted" style="margin:14px 0 0"> # Muted paragraph
+        <p class="muted" style="margin:14px 0 0">
           Available for short projects (1–2 weeks) or longer collaborations.
         </p>
       </div>
 
       <div class="card span-2" id="timeline">
-  <h2>Career timeline</h2>
-  <ul>
-    <li><strong>2024–2025</strong> — Industrial Postdoctoral Fellow, BIOTEC (Thailand)</li>
-    <li><strong>2023–2024</strong> — Postdoctoral Fellow (BIOTEC–UNESCO–TWAS), BIOTEC</li>
-    <li><strong>2017–2022</strong> — PhD, Tropical Medicine, Mahidol University</li>
-    <li><strong>2014–2015</strong> — MSc research, Institut Pasteur de Madagascar</li>
-  </ul>
-  </div>
+        <h2>Career timeline</h2>
+        <ul>
+          <li><strong>2024–2025</strong> — Industrial Postdoctoral Fellow, BIOTEC (Thailand)</li>
+          <li><strong>2023–2024</strong> — Postdoctoral Fellow (BIOTEC–UNESCO–TWAS), BIOTEC</li>
+          <li><strong>2017–2022</strong> — PhD, Tropical Medicine, Mahidol University</li>
+          <li><strong>2014–2015</strong> — MSc research, Institut Pasteur de Madagascar</li>
+        </ul>
+      </div>
 
       <div class="card span-2" id="hire">
-  <h2>Hire me</h2>
-  <p class="muted">Tell me about your project and I’ll reply with a suggested plan and timeline.</p>
+        <h2>Hire me</h2>
+        <p class="muted">Tell me about your project and I’ll reply with a suggested plan and timeline.</p>
+        <!-- Paste your Google Form iframe code below -->
+      </div>
 
-  <!-- Paste your Google Form iframe code below -->
-  <!-- Example:
-  <iframe src="YOUR_FORM_EMBED_LINK" width="100%" height="850" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-  -->
-</div>
+      <div class="card span-2" id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:dorarajonhson@gmail.com">dorarajonhson@gmail.com</a></p>
 
-
-      <div class="card span-2" id="contact"> # Contact card, full width on desktop; used by nav
-        <h2>Contact</h2> # Title
-        <p>Email: <a href="mailto:dorarajonhson@gmail.com">dorarajonhson@gmail.com</a></p> # Clickable email link
-        <p class="smalllinks"> # Smaller link styling applied
+        <p class="smalllinks">
           ORCID: <a href="https://orcid.org/0000-0003-3247-4510" target="_blank" rel="noopener">0000-0003-3247-4510</a>
           · GitHub: <a href="https://github.com/dorarajonhson" target="_blank" rel="noopener">github.com/dorarajonhson</a>
-          <p><a href="publications.html">View publications →</a></p>
         </p>
-        <p class="muted" style="margin:10px 0 0"> # Tip text in muted style
+
+        <p><a href="publications.html">View publications →</a></p>
+
+        <p class="muted" style="margin:10px 0 0">
           Tip: include a brief description of your project + data type (16S, RNA-seq, multi-omics) and your deadline.
         </p>
       </div>
     </div>
 
-    <div class="footer">© Dora Rajonhson</div> # Footer copyright text
-  </div> # End wrap container
-</body> # End body section
-</html> # End HTML document
+    <div class="footer">© Dora Rajonhson</div>
+  </div>
+</body>
+</html>
+
 
 
