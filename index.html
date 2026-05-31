@@ -1,291 +1,950 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dora Rajonhson – Scientific Consultant</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dora Rajonhson, PhD — Computational Biologist</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --bg2: #0f1520;
+    --bg3: #141c2e;
+    --border: #1e2d45;
+    --text: #c8d8e8;
+    --text-dim: #6a85a0;
+    --accent: #4aaeff;
+    --accent2: #00e5a0;
+    --accent3: #ff6b6b;
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
 
-  <style>
-    :root{
-      --bg:#f6f6f7;
-      --card:#ffffff;
-      --text:#1f2328;
-      --muted:#5a5f66;
-      --line:#e6e6e8;
-      --shadow:0 10px 25px rgba(0,0,0,0.06);
-      --radius:16px;
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-      /* Accent color (deep teal) */
-      --accent:#0f766e;
-      --accentHover:#0b5f59;
-    }
+  html { scroll-behavior: smooth; }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: Arial, sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.65;
-    }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
 
-    a{color:var(--accent)}
-    a:hover{color:var(--accentHover)}
+  /* Grid noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      radial-gradient(ellipse 80% 50% at 20% 10%, rgba(74,174,255,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0,229,160,0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-    .wrap{max-width:980px; margin:auto; padding:24px}
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 60px;
+    background: rgba(10,14,20,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
 
-    .topbar{
-      display:flex; gap:14px; align-items:center; justify-content:space-between;
-      padding:10px 0;
-    }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
 
-    .nav a{
-      text-decoration:none;
-      color:var(--muted);
-      margin-left:14px;
-      font-size:0.95em;
-    }
-    .nav a:hover{color:var(--text); text-decoration:underline}
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
 
-    .hero{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:38px;
-      margin-top:10px;
-    }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
 
-    h1{margin:0; font-size:2.25em; letter-spacing:-0.02em}
-    .subtitle{margin:10px 0 18px; color:var(--muted); font-size:1.05em}
+  .nav-links a:hover { color: var(--accent); }
 
-    .badges{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 0}
-    .badge{
-      border:1px solid var(--line);
-      background:#fafafa;
-      border-radius:999px;
-      padding:6px 10px;
-      font-size:0.9em;
-      color:var(--muted);
-    }
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 48px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
 
-    .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:18px}
+  .hero-content { max-width: 700px; }
 
-    .btn{
-      display:inline-block;
-      text-decoration:none;
-      padding:11px 14px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:#fff;
-      font-weight:600;
-      font-size:0.95em;
-      color:var(--text);
-    }
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent2);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-    .btn.primary{
-      background:var(--accent);
-      color:#fff;
-      border-color:var(--accent);
-    }
-    .btn.primary:hover{
-      background:var(--accentHover);
-      border-color:var(--accentHover);
-    }
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent2);
+  }
 
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:18px;
-      margin-top:18px;
-    }
-    @media (min-width: 860px){
-      .grid{grid-template-columns: 1fr 1fr;}
-      .span-2{grid-column: 1 / -1;}
-    }
+  h1 {
+    font-family: var(--sans);
+    font-size: clamp(38px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    color: #e8f0f8;
+  }
 
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:28px;
-    }
+  h1 strong {
+    font-weight: 600;
+    color: #ffffff;
+  }
 
-    h2{margin:0 0 10px; font-size:1.25em}
-    ul{margin:10px 0 0; padding-left:18px}
-    li{margin:6px 0}
+  .hero-sub {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--accent);
+    margin-bottom: 28px;
+    letter-spacing: 0.02em;
+  }
 
-    .muted{color:var(--muted)}
-    .splitline{border-top:1px solid var(--line); margin:16px 0}
+  .hero-desc {
+    font-size: 16px;
+    color: var(--text-dim);
+    max-width: 560px;
+    margin-bottom: 40px;
+    line-height: 1.8;
+  }
 
-    .footer{
-      text-align:center;
-      color:var(--muted);
-      font-size:0.9em;
-      padding:26px 0 10px;
-    }
+  .hero-desc strong { color: var(--text); font-weight: 500; }
 
-    .smalllinks a{color:var(--accent); text-decoration:none}
-    .smalllinks a:hover{text-decoration:underline; color:var(--accentHover)}
-  </style>
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 24px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0a0e14;
+    font-weight: 500;
+  }
+
+  .btn-primary:hover { background: #6bbfff; transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+  }
+
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+  /* STATS BAR */
+  .stats-bar {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    padding: 0 48px;
+  }
+
+  .stats-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stat {
+    padding: 28px 0;
+    border-right: 1px solid var(--border);
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+
+  .stat:first-child { padding-left: 0; }
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent2);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    font-size: 28px;
+    font-weight: 400;
+    color: #e8f0f8;
+    margin-bottom: 40px;
+    letter-spacing: -0.01em;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .skill-cell {
+    background: var(--bg2);
+    padding: 24px 28px;
+    transition: background 0.2s;
+  }
+
+  .skill-cell:hover { background: var(--bg3); }
+
+  .skill-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 3px;
+    background: rgba(74,174,255,0.08);
+    color: var(--text-dim);
+    border: 1px solid rgba(74,174,255,0.15);
+    white-space: nowrap;
+  }
+
+  .tag.green {
+    background: rgba(0,229,160,0.08);
+    border-color: rgba(0,229,160,0.15);
+    color: #7dd8ba;
+  }
+
+  .tag.red {
+    background: rgba(255,107,107,0.08);
+    border-color: rgba(255,107,107,0.15);
+    color: #e8a0a0;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .project-card:hover { border-color: rgba(74,174,255,0.3); transform: translateY(-2px); }
+  .project-card:hover::before { opacity: 1; }
+
+  .project-type {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent2);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .project-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #e8f0f8;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .project-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .project-methods {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .method-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 2px;
+    background: rgba(74,174,255,0.06);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+  }
+
+  .project-pub {
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  /* PUBLICATIONS */
+  .pub-list { display: flex; flex-direction: column; gap: 16px; }
+
+  .pub-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: start;
+    transition: border-color 0.2s;
+  }
+
+  .pub-item:hover { border-color: rgba(74,174,255,0.3); }
+
+  .pub-year {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    padding-top: 2px;
+    min-width: 36px;
+  }
+
+  .pub-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #e8f0f8;
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+
+  .pub-journal {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  .pub-status {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 1px 7px;
+    border-radius: 2px;
+    background: rgba(255,107,107,0.1);
+    color: #e8a0a0;
+    border: 1px solid rgba(255,107,107,0.2);
+    margin-left: 8px;
+  }
+
+  /* TIMELINE */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .timeline-item:last-child { border-bottom: none; }
+
+  .timeline-date {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    padding-top: 2px;
+  }
+
+  .timeline-role {
+    font-size: 15px;
+    font-weight: 500;
+    color: #e8f0f8;
+    margin-bottom: 2px;
+  }
+
+  .timeline-org {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .timeline-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .contact-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+    display: block;
+  }
+
+  .contact-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  .contact-icon {
+    font-family: var(--mono);
+    font-size: 20px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .contact-type {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .contact-value {
+    font-size: 14px;
+    color: #e8f0f8;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content > * {
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-tag { animation-delay: 0.1s; }
+  h1 { animation-delay: 0.2s; }
+  .hero-sub { animation-delay: 0.3s; }
+  .hero-desc { animation-delay: 0.4s; }
+  .hero-cta { animation-delay: 0.5s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 20px 60px; }
+    section { padding: 60px 20px; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .skills-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+    footer { padding: 24px 20px; flex-direction: column; gap: 8px; text-align: center; }
+    .stats-bar { padding: 0 20px; }
+  }
+</style>
 </head>
-
 <body>
-  <div class="wrap">
-    <div class="topbar">
-      <div class="muted"><strong>Dora Rajonhson</strong> · PhD</div>
-      <div class="nav">
-        <a href="#timeline">Timeline</a>
-        <a href="#credibility">Credibility</a>
-        <a href="#services">Services</a>
-        <a href="#how">How I work</a>
-        <a href="#hire">Hire me</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
 
-    <div class="hero">
-      <img src="_DSC2404-19.JPG" alt="Dora Rajonhson"
-           style="width:120px;height:120px;border-radius:999px;object-fit:cover;border:1px solid #e6e6e8;margin:10px 0 6px;">
+<nav>
+  <a href="#" class="nav-logo">DR // computational biology</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-      <h1>Dora Rajonhson, PhD</h1>
-      <div class="subtitle">Scientific Consultant in human and animal health & Multi-Omics</div>
-
-      <p>
-        I am a PhD scientist working at the interface of tropical medicine, animal health,
-        bioinformatics, and microbiome ecology. I support research laboratories and public health
-        teams providing omics data analysis, reproducible workflows, and publication-ready reporting.
+<!-- HERO -->
+<div style="padding-top:60px;">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">Computational Biologist · PhD</div>
+      <h1><strong>Dora Rajonhson</strong></h1>
+      <div class="hero-sub">Machine Learning & Bioinformatics · Multi-omics · 8 years research experience</div>
+      <p class="hero-desc">
+        I build <strong>ML-integrated bioinformatics pipelines</strong> applied t genomic, transcriptomic, and microbiome datasets from raw sequencing reads to interpretable biological results. 
+        I have worked across medical entomology, aquaculture health, and zoonotic disease surveillance, consistently applying a computational core to new biological systems.
       </p>
-
-      <p class="muted" style="margin-top:-6px">
-        Who I help: laboratories · research institutes · public health programs · biotech & aquaculture teams
-      </p>
-
-      <div class="cta">
-        <a class="btn primary" href="mailto:dorarajonhson@gmail.com">Email me</a>
-        <a class="btn" href="Rajonhson_CV.pdf" target="_blank" rel="noopener">Download CV</a>
-      </div>
-
-      <div class="badges">
-        <div class="badge">Tropical medicine</div>
-        <div class="badge">Vector-borne diseases</div>
-        <div class="badge">Microbiome ecology</div>
-        <div class="badge">RNA-seq / transcriptomics</div>
-        <div class="badge">Reproducible workflows</div>
+      <div class="hero-cta">
+        <a href="https://dorarajonhson.github.io/DoraRajonhson/Rajonhson_CV.pdf" class="btn btn-primary" target="_blank">Download CV</a>
+        <a href="https://orcid.org/0000-0003-3247-4510" class="btn btn-outline" target="_blank">ORCID Profile</a>
+        <a href="mailto:dorarajonhson@gmail.com" class="btn btn-outline">Get in touch</a>
       </div>
     </div>
-
-    <div class="grid">
-      <div class="card" id="services">
-        <h2>Consulting Services</h2>
-        <ul>
-          <li>Research support (vector biology, microbiomes, molecular markers)</li>
-          <li>Microbiome analysis (16S rRNA, diversity metrics, longitudinal ecology)</li>
-          <li>RNA-seq and transcriptomics workflows (DESeq2, annotation, functional interpretation)</li>
-          <li>Multi-omics integration (host–microbiome–environment frameworks)</li>
-          <li>Data visualization for publications and reports</li>
-          <li>Scientific writing support (manuscripts, grant proposals, reviewer responses)</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>Selected Expertise Areas</h2>
-        <ul>
-          <li>Vector-borne disease research</li>
-          <li>Aquaculture health and environmental stress biology</li>
-          <li>Environmental microbiome monitoring</li>
-        </ul>
-
-        <div class="splitline"></div>
-
-        <p class="muted" style="margin:0">
-          Typical outputs: analysis plan + timeline, reproducible scripts, publication-ready figures,
-          and clear interpretation aligned with your study questions.
-        </p>
-      </div>
-
-      <div class="card span-2" id="credibility">
-        <h2>Credibility</h2>
-
-        <p class="muted" style="margin:0 0 10px">Affiliations & training</p>
-        <ul>
-          <li>
-            <strong>BIOTEC / NSTDA (Thailand)</strong> — Postdoctoral Fellow
-            (<a href="https://www.biotec.or.th/en/" target="_blank" rel="noopener">BIOTEC</a> /
-             <a href="https://www.nstda.or.th/en/" target="_blank" rel="noopener">NSTDA</a>)
-          </li>
-          <li>
-            <strong>Mahidol University</strong> — PhD, Tropical Medicine
-            (<a href="https://mahidol.ac.th/" target="_blank" rel="noopener">Mahidol</a>)
-          </li>
-        </ul>
-
-        <p class="muted" style="margin:16px 0 10px">Fellowships & awards</p>
-        <ul>
-          <li><strong>PMUC–Industrial Postdoctoral Fellowship</strong> (Thailand)</li>
-          <li><strong>BIOTEC–UNESCO–TWAS Postdoctoral Fellowship</strong></li>
-          <li><strong>OWSD–UNESCO PhD Fellowship</strong></li>
-        </ul>
-
-        <p class="muted" style="margin:16px 0 10px">Publications</p>
-        <ul>
-             <li><a href="publications.html">View publications →</a></li>
-        </ul>
-        <p class="muted" style="margin:16px 0 0">
-          ORCID: <a href="https://orcid.org/0000-0003-3247-4510" target="_blank" rel="noopener">0000-0003-3247-4510</a>
-        </p>
-      </div>
-
-      <div class="card span-2" id="how">
-        <h2>How I work</h2>
-        <ol style="margin:10px 0 0; padding-left:18px">
-          <li><strong>Clarify goals.</strong> A short call/email to define your question, data, and timeline.</li>
-          <li><strong>Plan + execute.</strong> I propose a clear analysis plan, then deliver reproducible results.</li>
-          <li><strong>Interpret + handover.</strong> You receive figures, summaries, and code for full transparency.</li>
-        </ol>
-        <p class="muted" style="margin:14px 0 0">
-          Available for short projects (1–2 weeks) or longer collaborations.
-        </p>
-      </div>
-
-      <div class="card span-2" id="timeline">
-        <h2>Career timeline</h2>
-        <ul>
-          <li><strong>2026–present</strong> — Independent Scientific Consultant (Tropical Medicine, Medical Entomology & Multi-Omics)</li>
-          <li><strong>2024–2025</strong> — Industrial Postdoctoral Fellow, BIOTEC (Thailand)</li>
-          <li><strong>2023–2024</strong> — Postdoctoral Fellow (BIOTEC–UNESCO–TWAS), BIOTEC</li>
-          <li><strong>2017–2022</strong> — PhD, Tropical Medicine, Mahidol University</li>
-          <li><strong>2014–2015</strong> — MSc research, Institut Pasteur de Madagascar</li>
-        </ul>
-      </div>
-
-      <div class="card span-2" id="hire">
-        <h2>Hire me</h2>
-        <p class="muted">Tell me about your project and I’ll reply with a suggested plan and timeline.</p>
-        
-    <p>
-    <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfFdILMyA4p-tR47OLp-Dmhwbb7Z_ModHRP80D1si13u_DZ-Q/viewform?usp=sharing"
-       target="_blank" rel="noopener">
-      Fill out the project request form
-    </a>
-    </p>
-      </div>
-
-      <div class="card span-2" id="contact">
-        <h2>Contact</h2>
-         <p>Email: <a href="mailto:dorarajonhson@gmail.com">dorarajonhson@gmail.com</a></p>
-        
-        <p class="smalllinks">
-        GitHub: <a href="https://github.com/dorarajonhson" target="_blank" rel="noopener">github.com/dorarajonhson</a>
-        </p>
-      </div>
-    </div>
-
-    <div class="footer">© Dora Rajonhson</div>
   </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Years research experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3+</div>
+      <div class="stat-label">First-author publications</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Omics data types</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">International fellowships</div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Technical expertise</div>
+  <h2>Skills & Tools</h2>
+  <div class="skills-grid">
+    <div class="skill-cell">
+      <div class="skill-label">Languages</div>
+      <div class="skill-tags">
+        <span class="tag">R</span>
+        <span class="tag">bash / shell</span>
+        <span class="tag">Python</span>
+        <span class="tag">HPC / SLURM</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-label">Machine Learning</div>
+      <div class="skill-tags">
+        <span class="tag green">Random Forest</span>
+        <span class="tag green">ANN classification</span>
+        <span class="tag green">GLM / logit regression</span>
+        <span class="tag green">Discriminant analysis</span>
+        <span class="tag green">PCA / NMDS</span>
+        <span class="tag green">PERMANOVA</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-label">Transcriptomics & Genomics</div>
+      <div class="skill-tags">
+        <span class="tag">Bulk RNA-seq</span>
+        <span class="tag">DESeq2 / edgeR</span>
+        <span class="tag">STAR / HISAT2</span>
+        <span class="tag">GO/KEGG enrichment</span>
+        <span class="tag">Kraken2 / Bracken</span>
+        <span class="tag">BWA / samtools</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-label">Microbiome & Community Analysis</div>
+      <div class="skill-tags">
+        <span class="tag">QIIME2 / DADA2</span>
+        <span class="tag">phyloseq</span>
+        <span class="tag">LEfSe</span>
+        <span class="tag">PICRUSt2</span>
+        <span class="tag">16S rRNA (short & long-read)</span>
+        <span class="tag">fastp</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-label">Temporal & Network Analysis</div>
+      <div class="skill-tags">
+        <span class="tag">Zeta diversity</span>
+        <span class="tag">Turnover rates</span>
+        <span class="tag">Synchrony analysis</span>
+        <span class="tag">Bray-Curtis dissimilarity</span>
+        <span class="tag">igraph / Cytoscape</span>
+        <span class="tag">RDA / CCA</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-label">Multi-omics & Integration</div>
+      <div class="skill-tags">
+        <span class="tag">Metagenomics</span>
+        <span class="tag">Viromics</span>
+        <span class="tag">Transcriptomics + microbiome</span>
+        <span class="tag">AMR profiling</span>
+        <span class="tag">Source tracking</span>
+        <span class="tag">Geometric morphometrics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Selected work</div>
+  <h2>Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-type">ML · Microbiome · Disease</div>
+      <div class="project-title">Random Forest modelling of WSSV resistance in shrimp gut microbiota</div>
+      <div class="project-desc">Applied Random Forest (randomForest, R) in a network-based meta-analysis to identify microbial taxa associated with White Spot Syndrome Virus resistance and susceptibility. Used taxon-level feature importance to extract key disease signals from a multi-study dataset.</div>
+      <div class="project-methods">
+        <span class="method-tag">Random Forest</span>
+        <span class="method-tag">R</span>
+        <span class="method-tag">16S rRNA</span>
+        <span class="method-tag">Feature importance</span>
+        <span class="method-tag">Meta-analysis</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-type">Transcriptomics · Multi-omics</div>
+      <div class="project-title">Host transcriptomic response to dietary mycotoxin contamination in shrimp</div>
+      <div class="project-desc">End-to-end RNA-seq pipeline (Illumina NovaSeq) on shrimp intestine and hepatopancreas: QC, alignment, DESeq2 differential expression, GO/KEGG enrichment. Paired with parallel 16S rRNA microbiome profiling — a multi-omics dataset linking host response to microbial community shifts.</div>
+      <div class="project-methods">
+        <span class="method-tag">RNA-seq</span>
+        <span class="method-tag">DESeq2</span>
+        <span class="method-tag">GO/KEGG</span>
+        <span class="method-tag">16S rRNA</span>
+        <span class="method-tag">HPC/SLURM</span>
+      </div>
+      <div class="project-pub">→ Under review · Food and Chemical Toxicology</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-type">Temporal Analysis · Community Dynamics</div>
+      <div class="project-title">13-week longitudinal microbiome dynamics in closed aquaculture systems</div>
+      <div class="project-desc">Weekly 16S rRNA sampling of shrimp intestines over 13 weeks with daily water parameter recording. Applied the Buckley et al. (2021) framework: PCoA ordination trajectories, PERMANOVA, turnover rates, synchrony analysis, zeta diversity, and mean Bray-Curtis dissimilarity to characterise community assembly processes.</div>
+      <div class="project-methods">
+        <span class="method-tag">QIIME2/DADA2</span>
+        <span class="method-tag">phyloseq</span>
+        <span class="method-tag">Zeta diversity</span>
+        <span class="method-tag">Synchrony</span>
+        <span class="method-tag">RDA</span>
+        <span class="method-tag">LEfSe</span>
+      </div>
+      <div class="project-pub">→ Under review · Aquaculture</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-type">Metagenomics · Viromics</div>
+      <div class="project-title">First metagenomic & viromic characterisation of bat bug and swallow bug microbiomes</div>
+      <div class="project-desc">Sequenced both DNA and RNA fractions across two ectoparasite species and three life stages. Taxonomic profiling with Kraken2/Bracken, diversity analyses, and multivariate statistics to identify community drivers, flag zoonotic taxa, and screen for AMR genes. RNA fraction enabled RNA virus detection.</div>
+      <div class="project-methods">
+        <span class="method-tag">Kraken2/Bracken</span>
+        <span class="method-tag">BWA</span>
+        <span class="method-tag">samtools</span>
+        <span class="method-tag">fastp</span>
+        <span class="method-tag">AMR profiling</span>
+        <span class="method-tag">Viromics</span>
+      </div>
+      <div class="project-pub">→ Under review · PLOS Neglected Tropical Diseases</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-type">Supervised Classification · Published</div>
+      <div class="project-title">ANN-based species classification from morphometric data in Cimicidae</div>
+      <div class="project-desc">Applied geometric morphometrics alongside ANN-based classification (XYOM) and discriminant analysis to discriminate bed bug, bat bug, and swallow bug species from pronotum shape data. Compared traditional linear morphometry to outline-based geometric approaches.</div>
+      <div class="project-methods">
+        <span class="method-tag">ANN classification</span>
+        <span class="method-tag">Geometric morphometrics</span>
+        <span class="method-tag">Discriminant analysis</span>
+        <span class="method-tag">XYOM</span>
+      </div>
+      <div class="project-pub">→ Published · Insects 2022, 13(12):1155</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-type">Predictive Modelling · Published</div>
+      <div class="project-title">GLM dose-response modelling of fipronil against plague flea vectors</div>
+      <div class="project-desc">Evaluated fipronil as a systemic insecticide against Xenopsylla cheopis, the primary plague vector in Madagascar. Built GLM with binomial distribution and logit-link in R to compute LD50 and LD90 values across three experimental delivery methods. Findings informed Madagascar's National Plague Control Program.</div>
+      <div class="project-methods">
+        <span class="method-tag">GLM / logit-link</span>
+        <span class="method-tag">R</span>
+        <span class="method-tag">Dose-response modelling</span>
+        <span class="method-tag">LD50 / LD90</span>
+      </div>
+      <div class="project-pub">→ Published · J. Medical Entomology 2017</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-label">Research output</div>
+  <h2>Publications</h2>
+  <div class="pub-list">
+
+    <div class="pub-item">
+      <div class="pub-year">2024</div>
+      <div>
+        <div class="pub-title">Integrating short- and full-length 16S rRNA gene sequencing to elucidate microbiome profiles in Pacific white shrimp (Litopenaeus vannamei) ponds</div>
+        <div class="pub-journal">Microbiology Spectrum · doi:10.1128/spectrum.00965-24</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2022</div>
+      <div>
+        <div class="pub-title">Comparison of Two Different Morphological Methods to Study the Pronotum of Cimicidae: Bed Bugs, Bat Bugs, and Swallow Bugs</div>
+        <div class="pub-journal">Insects · 13(12):1155 · doi:10.3390/insects13121155</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2017</div>
+      <div>
+        <div class="pub-title">Effectiveness of Fipronil as a Systemic Control Agent Against Xenopsylla cheopis (Siphonaptera: Pulicidae) in Madagascar</div>
+        <div class="pub-journal">Journal of Medical Entomology · doi:10.1093/jme/tjw200</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">In review</div>
+      <div>
+        <div class="pub-title">Microbiome dynamics in closed aquaculture systems: environmental drivers and implications for sustainable shrimp farming <span class="pub-status">under review</span></div>
+        <div class="pub-journal">Aquaculture</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">In review</div>
+      <div>
+        <div class="pub-title">Hidden threats in aquafeeds: multi-mycotoxin contamination and its molecular impacts on shrimp health and food safety <span class="pub-status">under review</span></div>
+        <div class="pub-journal">Food and Chemical Toxicology</div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">In review</div>
+      <div>
+        <div class="pub-title">Ectoparasite microbiomes as sentinels of zoonotic risk: a metagenomic approach to wildlife-associated vector surveillance <span class="pub-status">under review</span></div>
+        <div class="pub-journal">PLOS Neglected Tropical Diseases</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career</div>
+  <h2>Experience & Education</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-date">2025–present</div>
+      <div>
+        <div class="timeline-role">Adjunct Lecturer & PhD Co-Supervisor</div>
+        <div class="timeline-org">University of Antananarivo, Madagascar</div>
+        <div class="timeline-desc">Co-supervising PhD on Kdr gene amplicon sequencing and phylogeographic analysis of plague vectors.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2024–2025</div>
+      <div>
+        <div class="timeline-role">Industrial Postdoctoral Fellow — Multi-omics & Food Safety</div>
+        <div class="timeline-org">BIOTEC / NSTDA · PMUC Fellowship · Thailand</div>
+        <div class="timeline-desc">Led longitudinal 16S rRNA and RNA-seq pipelines for shrimp microbiome dynamics and mycotoxin transcriptomics. Applied Random Forest for disease resistance modelling. Supervised MSc student in bioinformatics.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2023–2024</div>
+      <div>
+        <div class="timeline-role">Postdoctoral Fellow — Microbiome Surveillance & Bioinformatics</div>
+        <div class="timeline-org">BIOTEC · UNESCO/TWAS Fellowship · Thailand</div>
+        <div class="timeline-desc">Benchmarked Illumina vs Oxford Nanopore 16S sequencing strategies. Built microbial networks (igraph) and applied PICRUSt2 for functional pathway prediction. Published in Microbiology Spectrum (2024).</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2017–2022</div>
+      <div>
+        <div class="timeline-role">PhD — Tropical Medicine</div>
+        <div class="timeline-org">Mahidol University · OWSD-UNESCO/SIDA Fellowship · Thailand</div>
+        <div class="timeline-desc">First metagenomic & viromic characterisation of bat bug and swallow bug microbiomes. ANN-based species classification. Most Outstanding PhD Student — Tranakchit Harinasuta Award (2018).</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2014–2015</div>
+      <div>
+        <div class="timeline-role">MSc Researcher — Plague Vector Control</div>
+        <div class="timeline-org">Institut Pasteur de Madagascar · Gérard Scholarship</div>
+        <div class="timeline-desc">GLM dose-response modelling of fipronil against plague flea vectors. Published in Journal of Medical Entomology (2017).</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get in touch</div>
+  <h2>Contact</h2>
+  <div class="contact-grid">
+    <a href="mailto:dorarajonhson@gmail.com" class="contact-card">
+      <div class="contact-icon">@</div>
+      <div class="contact-type">Email</div>
+      <div class="contact-value">dorarajonhson@gmail.com</div>
+    </a>
+    <a href="https://github.com/dorarajonhson" class="contact-card" target="_blank">
+      <div class="contact-icon">&lt;/&gt;</div>
+      <div class="contact-type">GitHub</div>
+      <div class="contact-value">github.com/dorarajonhson</div>
+    </a>
+    <a href="https://orcid.org/0000-0003-3247-4510" class="contact-card" target="_blank">
+      <div class="contact-icon">ID</div>
+      <div class="contact-type">ORCID</div>
+      <div class="contact-value">0000-0003-3247-4510</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Dora Rajonhson, PhD · Cap d'Ail, France</p>
+  <p>EN · FR · MG</p>
+</footer>
+
 </body>
 </html>
-
-
-
